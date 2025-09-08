@@ -9,5 +9,7 @@ namespace EnumGenerator
     internal class Class1
     {
         // ABCD
+        //EFGH
+        // IJKL
     }
 }
