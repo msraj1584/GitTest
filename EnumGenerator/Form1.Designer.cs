@@ -36,10 +36,10 @@
             this.txtCsvPath = new System.Windows.Forms.TextBox();
             this.btnBrowseCsv = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtNamespace = new System.Windows.Forms.TextBox();
             this.txtClass = new System.Windows.Forms.TextBox();
+            this.txtNamespace = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -122,15 +122,21 @@
             this.panel2.Size = new System.Drawing.Size(764, 169);
             this.panel2.TabIndex = 7;
             // 
-            // label2
+            // txtClass
             // 
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(27, 30);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(133, 30);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "namespace : ";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.txtClass.Enabled = false;
+            this.txtClass.Location = new System.Drawing.Point(181, 85);
+            this.txtClass.Name = "txtClass";
+            this.txtClass.Size = new System.Drawing.Size(377, 22);
+            this.txtClass.TabIndex = 8;
+            // 
+            // txtNamespace
+            // 
+            this.txtNamespace.Enabled = false;
+            this.txtNamespace.Location = new System.Drawing.Point(181, 30);
+            this.txtNamespace.Name = "txtNamespace";
+            this.txtNamespace.Size = new System.Drawing.Size(377, 22);
+            this.txtNamespace.TabIndex = 7;
             // 
             // label3
             // 
@@ -142,19 +148,15 @@
             this.label3.Text = "class : ";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // txtNamespace
+            // label2
             // 
-            this.txtNamespace.Location = new System.Drawing.Point(181, 30);
-            this.txtNamespace.Name = "txtNamespace";
-            this.txtNamespace.Size = new System.Drawing.Size(377, 22);
-            this.txtNamespace.TabIndex = 7;
-            // 
-            // txtClass
-            // 
-            this.txtClass.Location = new System.Drawing.Point(181, 85);
-            this.txtClass.Name = "txtClass";
-            this.txtClass.Size = new System.Drawing.Size(377, 22);
-            this.txtClass.TabIndex = 8;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(27, 30);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(133, 30);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "namespace : ";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // Form1
             // 

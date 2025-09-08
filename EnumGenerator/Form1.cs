@@ -38,13 +38,27 @@ namespace EnumGenerator
 
         private void btnBrowseOutput_Click(object sender, EventArgs e)
         {
-            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            //using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            //{
+            //    saveFileDialog.Filter = "C# Files (*.cs)|*.cs";
+            //    saveFileDialog.FileName = "DIDOEnums.cs";
+            //    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            //    {
+            //        txtOutputPath.Text = saveFileDialog.FileName;
+            //    }
+            //}
+
+            // for folder only option
+            using (FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog())
             {
-                saveFileDialog.Filter = "C# Files (*.cs)|*.cs";
-                saveFileDialog.FileName = "DIDOEnums.cs";
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                folderBrowserDialog.Description = "Select output folder";
+                folderBrowserDialog.ShowNewFolderButton = true;
+
+                if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
                 {
-                    txtOutputPath.Text = saveFileDialog.FileName;
+                    // Fix filename as DIDOEnums.cs inside the chosen folder
+                    string outputPath = System.IO.Path.Combine(folderBrowserDialog.SelectedPath, "DIDOEnums.cs");
+                    txtOutputPath.Text = outputPath;
                 }
             }
         }
@@ -93,8 +107,18 @@ namespace EnumGenerator
                         writer.WriteLine("\t\t{");
                         writer.WriteLine("\t\t\tStart = -1,");
 
+                        //foreach (var inp in inputs)
+                        //    writer.WriteLine($"\t\t\t{inp.Name} = {inp.Id}, // {inp.IoName}");
+
+
                         foreach (var inp in inputs)
-                            writer.WriteLine($"\t\t\t{inp.Name} = {inp.Id}, // {inp.IoName}");
+                        {
+                            if (int.TryParse(inp.Id, out int idValue))
+                                writer.WriteLine($"\t\t\t{inp.Name} = 0x{idValue:X4}, // {inp.IoName}");  // 🔹 padded HEX
+                            else
+                                writer.WriteLine($"\t\t\t{inp.Name} = -1, // {inp.IoName} (Invalid ID)");
+                        }
+
 
                         writer.WriteLine("\t\t\tEnd");
                         writer.WriteLine("\t\t}");
@@ -108,8 +132,15 @@ namespace EnumGenerator
                         writer.WriteLine("\t\t{");
                         writer.WriteLine("\t\t\tStart = -1,");
 
+                        //foreach (var outp in outputs)
+                        //    writer.WriteLine($"\t\t\t{outp.Name} = {outp.Id}, // {outp.IoName}");
                         foreach (var outp in outputs)
-                            writer.WriteLine($"\t\t\t{outp.Name} = {outp.Id}, // {outp.IoName}");
+                        {
+                            if (int.TryParse(outp.Id, out int idValue))
+                                writer.WriteLine($"\t\t\t{outp.Name} = 0x{idValue:X4}, // {outp.IoName}");  // 🔹 padded HEX
+                            else
+                                writer.WriteLine($"\t\t\t{outp.Name} = -1, // {outp.IoName} (Invalid ID)");
+                        }
 
                         writer.WriteLine("\t\t\tEnd");
                         writer.WriteLine("\t\t}");
